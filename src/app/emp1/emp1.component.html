@@ -1,0 +1,44 @@
+<h1>Employee1 works!</h1>
+
+<p>titlecase pipe is used for emp names</p>
+<p>bootstrap is used for table </p>
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<table border="3" class="table" style=" height:100%; width:100%  " >
+
+    <tr>
+        <td colspan="3">
+            <input  type="text"  width="10px" class="form-control"  placeholder="Search" [(ngModel)]="filteredString" >
+        </td>
+       
+    </tr>
+    <tr >
+        <th  class="bg-danger text-white">
+            EmployeeId
+        </th>
+        <th class="bg-danger text-white">
+            EmployeeName
+        </th >
+        <th class="bg-danger text-white">
+            EmployeeSalary
+        </th>
+    </tr>
+    <tr appMycolor *ngFor="let employee of emp | empsearch:filteredString " >
+
+        <td class="bg-dark text-white">
+               {{employee.empId}}
+        </td>
+        <td class="bg-dark text-white">
+            {{employee.empName |titlecase}}
+     </td>
+     <td class="bg-dark text-white">
+        {{employee.empSalary | currency:'INR' }}
+ </td>
+    </tr>
+</table>
+{{errMsg | json}}
